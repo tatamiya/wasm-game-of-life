@@ -18,14 +18,14 @@ pub enum Cell {
 }
 
 #[wasm_bindgen]
-pub struct Univers {
+pub struct Universe {
     width: u32,
     height: u32,
     cells: Vec<Cell>,
 }
 
 #[wasm_bindgen]
-impl Univers {
+impl Universe {
     pub fn tick(&mut self) {
         let mut next = self.cells.clone();
 
@@ -69,7 +69,7 @@ impl Univers {
         count
     }
 
-    pub fn new() -> Univers {
+    pub fn new() -> Universe {
         let width = 64;
         let height = 64;
 
@@ -83,7 +83,7 @@ impl Univers {
             })
             .collect();
 
-        Univers {
+        Universe {
             width,
             height,
             cells,
@@ -95,7 +95,7 @@ impl Univers {
     }
 }
 
-impl fmt::Display for Univers {
+impl fmt::Display for Universe {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         for line in self.cells.as_slice().chunks(self.width as usize) {
             for &cell in line {
